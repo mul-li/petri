@@ -19,5 +19,8 @@ run.py
 *.json
 *.orig
 
-Petri.egg-info/*
+petri.egg-info/*
 doc/*
+
+dist/*
+build/*
