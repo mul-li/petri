@@ -1,0 +1,23 @@
+syntax: glob
+
+*.pyc
+__pycache__/*
+*~
+*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+log/*
+vnstats/*
+
+docs/build/*
+test/*
+tmp/*
+
+run.py
+*.csv
+*.json
+*.orig
+
+Petri.egg-info/*
+doc/*
