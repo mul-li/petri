@@ -1,0 +1,183 @@
+@font-face {
+	font-family: 'Exo 2';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Exo 2'), url(/static/fonts/Exo2-Regular.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Exo 2';
+	font-style: italic;
+	font-weight: normal;
+	src: local('Exo 2'), url(/static/fonts/Exo2-Italic.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Exo 2';
+	font-style: normal;
+	font-weight: bold;
+	src: local('Exo 2'), url(/static/fonts/Exo2-Bold.woff) format('woff');
+}
+
+@font-face {
+	font-family: 'Exo 2';
+	font-style: italic;
+	font-weight: bold;
+	src: local('Exo 2'), url(/static/fonts/Exo2-Italic-Bold.woff) format('woff');
+}
+
+
+@media screen and (max-width: 35.5em) {
+    .content > div {
+        width: 91.6667%;
+    }
+}
+
+@media screen and (min-width: 35.5em) {
+    .content > div {
+        width: 66.6667%;
+    }
+}
+
+
+@media screen and (min-width: 48em) {
+    .content > div {
+        width: 58.3333%;
+    }
+}
+
+@media screen and (min-width: 80em) {
+    .content > div {
+        width: 33.3333%
+    }
+}
+
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Exo 2', sans-serif;
+    text-align: center;
+}
+
+body > div {
+    min-height: 50vh;
+}
+
+header {
+    font-size: 1.5em;
+}
+
+h1 {
+    margin-bottom: 0.25em;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: #268bd2;
+}
+
+header > a:link,
+header > a:visited,
+header > a:hover,
+header > a:active {
+    color: black;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav > ul {
+    display: flex;
+    margin: 0;
+}
+
+nav > ul > li {
+    font-size: 1.2em;
+}
+
+nav > ul > li > a {
+    padding: .5em 1em;
+    display: block;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+input, select {
+    margin: 0.25em 0;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.2em;
+    font-family: 'Exo 2', sans-serif;
+}
+
+input[type=url], select {
+    padding: .5em .6em;
+    border: 1px solid #ccc;
+    box-shadow: inset 0 1px 3px #ddd;
+    border-radius: 4px;
+}
+
+select {
+    height: 2.25em;
+    background-color: #fff;
+}
+
+input:required:focus,
+select:required:focus {
+    outline: 0;
+    border-color: #dc322f;
+}
+
+input[type=submit] {
+    cursor: pointer;
+    background-color: #268bd2;
+    color: #fff;
+    padding: .5em 1em;
+    border-radius: 2px;
+    border: 0;
+}
+
+input[type=submit]:hover {
+    background-image: linear-gradient(transparent, rgba(0,0,0,.05), 40%, rgba(0,0,0,.1));
+}
+
+hr {
+    margin-top: 2.5vh;
+    margin-bottom: 0;
+}
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+footer > a {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+}

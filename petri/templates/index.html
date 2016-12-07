@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% set title = "Short it!" %}
+
+{% block content %}
+  <form method="POST" action="/">
+    {{ form.hidden_tag() }}
+    {{ form.url(required=True) }}
+    <a href="{{ url_for('root.advanced') }}">Advanced</a>
+    {{ form.submit() }}
+  </form>
+{% endblock %}

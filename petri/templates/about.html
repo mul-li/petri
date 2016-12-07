@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% set title = "About" %}
+
+{% block content %}
+    <p>{{ config['PETRI_SITE_TITLE'] }} is a URL-shortener service, that doesn't track you!</p>
+    <p>Due to the nature of this service, there are still some information we must store:</p>
+    <ul>
+      <li>The <b>URL</b> to be shortened</li>
+      <li>The <b>ID</b> of the short URL</li>
+      <li>The <b>expire date</b> of the short URL</li>
+    </ul>
+    <p><b>{{ config['PETRI_SITE_TITLE'] }} Version:</b> {{ PETRI_VERSION }}</p>
+{% endblock %}

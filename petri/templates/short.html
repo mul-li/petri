@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% set title = "Short" %}
+
+{% block content %}
+  {% set short_url = url_for('root.resolve', id=short_id, _external=True) %}
+  <p>Your shortened URL is: </p>
+  <p><a href="{{ short_url }}">{{ short_url }}</a></p>
+  <img src="{{ qrcode(short_url, error_correction='H', box_size=7) }}"></img>
+{% endblock %}
