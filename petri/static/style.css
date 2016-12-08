@@ -26,7 +26,6 @@
 	src: local('Exo 2'), url(/static/fonts/Exo2-Italic-Bold.woff) format('woff');
 }
 
-
 @media screen and (max-width: 35.5em) {
     .content > div {
         width: 91.6667%;
@@ -38,7 +37,6 @@
         width: 66.6667%;
     }
 }
-
 
 @media screen and (min-width: 48em) {
     .content > div {
