@@ -52,19 +52,41 @@
     }
 }
 
+body, .content, nav, form, nav > ul, footer {
+    display: flex;
+}
+
+body, form {
+    flex-direction: column;
+}
 
 body {
     height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-family: 'Exo 2', sans-serif;
     text-align: center;
+}
+
+body, nav > ul {
+    margin: 0;
 }
 
 body > div {
     min-height: 50vh;
+}
+
+input, select, body {
+    font-family: 'Exo 2', sans-serif;
+}
+
+body, .content, nav {
+    justify-content: center;
+}
+
+form {
+    align-items: flex-end;
+}
+
+.content > div {
+    max-width: 100%;
 }
 
 header {
@@ -96,45 +118,25 @@ ul {
     padding: 0;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-}
-
-nav > ul {
-    display: flex;
-    margin: 0;
-}
-
-nav > ul > li {
+nav > ul > li, input, select {
     font-size: 1.2em;
 }
 
-nav > ul > li > a {
+nav > ul > li > a, input[type=submit] {
     padding: .5em 1em;
+}
+
+nav > ul > li > a {
     display: block;
-}
-
-.content {
-    display: flex;
-    justify-content: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
 }
 
 input, select {
     margin: 0.25em 0;
     width: 100%;
     box-sizing: border-box;
-    font-size: 1.2em;
-    font-family: 'Exo 2', sans-serif;
 }
 
-input[type=url], select {
+select, input[type=url] {
     padding: .5em .6em;
     border: 1px solid #ccc;
     box-shadow: inset 0 1px 3px #ddd;
@@ -153,12 +155,11 @@ select:required:focus {
 }
 
 input[type=submit] {
-    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
     background-color: #268bd2;
     color: #fff;
-    padding: .5em 1em;
-    border-radius: 2px;
-    border: 0;
+    cursor: pointer;
 }
 
 input[type=submit]:hover {
@@ -171,7 +172,6 @@ hr {
 }
 
 footer {
-    display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 }
