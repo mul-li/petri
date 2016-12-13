@@ -26,6 +26,7 @@ def create_app():
     _default_secret_key = base64.b64encode(os.urandom(32)).decode('utf-8')
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', _default_secret_key)
     app.config.setdefault('PETRI_SITE_TITLE', 'Petri')
+    app.config.setdefault('DATABASE', 'petri.pickle')
 
     from .base36 import Base36Converter
     app.url_map.converters['base36'] = Base36Converter

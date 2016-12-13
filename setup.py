@@ -9,6 +9,6 @@ setup(
         'Flask==0.11.1',
         'Flask-WTF==0.13.1',
         'Flask-QRcode==0.8.0',
-        'mulli==0.0.1',
+        'mulli==0.0.2',
     },
 )

@@ -3,12 +3,7 @@ import random
 import string
 import itertools
 
-import functools
-
 import mulli
-
-load_urls = functools.partial(mulli.load_database, filename='petri.pickle')
-save_urls = functools.partial(mulli.save_database, filename='petri.pickle')
 
 trans_table = str.maketrans(dict((k, None) for k in string.punctuation))
 
@@ -23,7 +18,7 @@ def create_short_id(url):
     else:
         max_int = round(math.sqrt(math.sqrt(max_int)))
 
-    urls = load_urls()
+    urls = mulli.load_database()
     for _ in itertools.repeat(None, max_int):
         short_id = random.randint(1, max_int)
         if short_id not in urls:
@@ -32,17 +27,16 @@ def create_short_id(url):
 
 
 def save_url(id, url, valid=365):
-    urls = load_urls()
     entry = {'url': url}
-    save_urls(mulli.add_entry(id, entry, valid, urls))
+    mulli.add_entry(id, entry, valid)
 
 
 def remove_url(id):
-    urls = load_urls()
+    urls = mulli.load_database()
     del urls[id]
-    save_urls(urls)
+    mulli.save_database(urls)
 
 
 def load_url(id):
-    url = mulli.load_entry(id, load_urls())
+    url = mulli.load_entry(id)
     return url['url']
