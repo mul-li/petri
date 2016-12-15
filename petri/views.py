@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, redirect, abort
 
+import mulli
+
 from . import utils
 from . import forms
 from .base36 import base36
@@ -53,7 +55,7 @@ def resolve(id):
     except KeyError:
         return render_template('not_found.html', short_id=base36(id)), 404
     except ValueError:
-        utils.remove_url(id)
+        mulli.remove_entry(id)
         return render_template('not_found.html', short_id=base36(id)), 404
     except RuntimeError:
         abort(500)

@@ -1,6 +1,8 @@
 from flask import Blueprint, redirect, request, url_for
 from flask import make_response as _make_response
 
+import mulli
+
 from . import utils
 
 api_page = Blueprint('api', __name__)
@@ -54,7 +56,7 @@ def resolve(id):
     except KeyError:
         return make_response('Not found!', 404)
     except ValueError:
-        utils.remove_url(id)
+        mulli.remove_entry(id)
         return make_response('Not found!', 404)
     except RuntimeError:
         return make_response('Internal Server Error', 500)

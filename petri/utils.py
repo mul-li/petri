@@ -31,12 +31,6 @@ def save_url(id, url, valid=365):
     mulli.add_entry(id, entry, valid)
 
 
-def remove_url(id):
-    urls = mulli.load_database()
-    del urls[id]
-    mulli.save_database(urls)
-
-
 def load_url(id):
     url = mulli.load_entry(id)
     return url['url']
