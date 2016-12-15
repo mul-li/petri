@@ -5,7 +5,7 @@
 {% block content %}
   <form method="POST" action="/advanced">
     {{ form.hidden_tag() }}
-    {{ form.url(required=True) }}
+    {{ form.url(required=True, placeholder='URL…') }}
     {{ form.validity(required=True) }}
     {{ form.submit() }}
   </form>
