@@ -10,5 +10,8 @@
       <li>The <b>ID</b> of the short URL</li>
       <li>The <b>expire date</b> of the short URL</li>
     </ul>
+    {% if config['PETRI_ONION_ADDRESS'] %}
+      <p><b>{{ config['PETRI_SITE_TITLE'] }} Onion Address:</b> {{ config['PETRI_ONION_ADDRESS'] }}</p>
+    {% endif %}
     <p><b>{{ config['PETRI_SITE_TITLE'] }} Version:</b> {{ PETRI_VERSION }}</p>
 {% endblock %}
