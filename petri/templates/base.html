@@ -23,10 +23,13 @@
           {% block content %}
           {% endblock %}
           {% if config['FOOTER_LINKS'] %}
+            {% if '.onion' in request.url_root %}
+              {% set onion = True %}
+            {% endif %}
             <hr />
             <footer>
               {% for link in config['FOOTER_LINKS'] %}
-                <a href="{{ link['url'] }}">{{ link['text'] }}</a>
+                <a href="{{ link['onion_address'] if onion else link['url'] }}">{{ link['text'] }}</a>
               {% endfor %}
             </footer>
           {% endif %}
