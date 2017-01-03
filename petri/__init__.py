@@ -5,7 +5,7 @@ import base64
 from flask import Flask
 from flask_qrcode import QRcode
 
-from celery import Celery
+from celery import Celery, Task
 
 import pkg_resources
 
@@ -14,6 +14,15 @@ config_file = os.path.abspath('config.json')
 qrcode = QRcode()
 
 celery = Celery(__name__)
+
+
+class AppContextTask(Task):
+
+    abstract = True
+
+    def __call__(self, *args, **kwargs):
+        with self.app.flask_app.app_context():
+            return super().__call__(self, *args, **kwargs)
 
 
 def create_app():
@@ -35,6 +44,10 @@ def create_app():
 
     celery_config = app.config.get_namespace('PETRI_CELERY_')
     celery.conf.update(celery_config)
+    celery.Task = AppContextTask
+
+    if not hasattr(celery, 'flask_app'):
+        celery.flask_app = app
 
     from .base36 import Base36Converter
     app.url_map.converters['base36'] = Base36Converter
