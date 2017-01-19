@@ -15,7 +15,7 @@ itsdangerous==0.24        # via flask
 jinja2==2.8               # via flask
 kombu==4.0.2              # via celery
 markupsafe==0.23          # via jinja2
-mulli==0.0.3
+mulli==0.0.5
 pillow==3.4.2             # via flask-qrcode
 pytz==2016.10             # via celery
 qrcode==5.3               # via flask-qrcode

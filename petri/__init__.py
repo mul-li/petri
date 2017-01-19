@@ -5,7 +5,7 @@ import base64
 from flask import Flask
 from flask_qrcode import QRcode
 
-from celery import Celery, Task
+from celery import Celery
 
 import pkg_resources
 
@@ -14,15 +14,6 @@ config_file = os.path.abspath('config.json')
 qrcode = QRcode()
 
 celery = Celery(__name__)
-
-
-class AppContextTask(Task):
-
-    abstract = True
-
-    def __call__(self, *args, **kwargs):
-        with self.app.flask_app.app_context():
-            return super().__call__(self, *args, **kwargs)
 
 
 def create_app():
@@ -40,14 +31,12 @@ def create_app():
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', _default_secret_key)
     app.config.setdefault('PETRI_SITE_TITLE', 'Petri')
     app.config.setdefault('DATABASE', 'petri.pickle')
-    app.config.setdefault('PETRI_CELERY_BROKER_URL', 'pyamqp://localhost:5672/petri')
+    app.config.setdefault('PETRI_CELERY_BROKER_URL', 'pyamqp://petri:petri@localhost:5672/petri')
 
-    celery_config = app.config.get_namespace('PETRI_CELERY_')
-    celery.conf.update(celery_config)
-    celery.Task = AppContextTask
+    celery_config = app.config.get_namespace('PETRI_CELERY_', lowercase=False)
 
-    if not hasattr(celery, 'flask_app'):
-        celery.flask_app = app
+    from mulli import make_celery
+    make_celery(app, celery_config)
 
     from .base36 import Base36Converter
     app.url_map.converters['base36'] = Base36Converter
