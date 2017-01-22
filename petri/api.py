@@ -56,7 +56,7 @@ def resolve(id):
     except KeyError:
         return make_response('Not found!', 404)
     except ValueError:
-        mulli.remove_entry(id)
+        mulli.remove_entry.apply_async(args=[id])
         return make_response('Not found!', 404)
     except RuntimeError:
         return make_response('Internal Server Error', 500)

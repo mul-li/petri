@@ -55,7 +55,7 @@ def resolve(id):
     except KeyError:
         return render_template('not_found.html', short_id=base36(id)), 404
     except ValueError:
-        mulli.remove_entry(id)
+        mulli.remove_entry.apply_async(args=[id])
         return render_template('not_found.html', short_id=base36(id)), 404
     except RuntimeError:
         abort(500)
