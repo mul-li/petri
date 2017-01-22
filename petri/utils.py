@@ -2,6 +2,9 @@ import math
 import random
 import string
 import itertools
+import sys
+
+from zlib import adler32
 
 import mulli
 
@@ -16,6 +19,8 @@ def create_short_id(url):
     except ValueError:
         raise
     else:
+        if max_int >= sys.float_info.max:
+            max_int = adler32(mulli.int_to_bytes(max_int))
         max_int = round(math.sqrt(math.sqrt(max_int)))
 
     urls = mulli.load_database()
