@@ -1,6 +1,10 @@
-{% extends "base.html" %}
+{% extends "mulli/base.html" %}
 
 {% set title = "Advanced Short it!" %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='petri.css') }}" />
+{% endblock %}
 
 {% block content %}
   <form method="POST" action="/advanced">
